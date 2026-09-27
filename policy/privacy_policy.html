@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính Sách Quyền Riêng Tư - Chim Nhà</title>
+    <style>
+        :root {
+            --primary: #0F766E;
+            --primary-light: #14B8A6;
+            --bg: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0F172A;
+                --card-bg: #1E293B;
+                --text-main: #F8FAFC;
+                --text-muted: #94A3B8;
+            }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 16px;
+        }
+        .logo {
+            font-size: 40px;
+        }
+        h1 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 28px;
+        }
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        h2 {
+            color: var(--primary);
+            margin-top: 28px;
+            font-size: 20px;
+        }
+        p, li {
+            font-size: 15px;
+        }
+        .badge {
+            background-color: rgba(15, 118, 110, 0.15);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        .contact-box {
+            background-color: rgba(20, 184, 166, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <div class="logo">🐦</div>
+                <div>
+                    <h1>Chim Nhà - Chính Sách Quyền Riêng Tư</h1>
+                    <div class="last-updated">Cập nhật lần cuối: 25 tháng 9, 2026</div>
+                </div>
+            </div>
+
+            <div class="badge">🔒 100% Cam Kết Offline & Bảo Mật Dữ Liệu</div>
+
+            <p>Ứng dụng <strong>Chim Nhà</strong> (sau đây gọi là "Ứng dụng") tôn trọng và cam kết bảo vệ tuyệt đối quyền riêng tư của người dùng. Chính sách quyền riêng tư này giải thích cách ứng dụng hoạt động và minh bạch về việc thu thập dữ liệu.</p>
+
+            <h2>1. Thu Thập Dữ Liệu Cá Nhân</h2>
+            <p><strong>"We do not collect personal data" (Chúng tôi KHÔNG thu thập bất kỳ dữ liệu cá nhân nào).</strong></p>
+            <ul>
+                <li>Ứng dụng hoạt động <strong>100% Offline</strong> hoàn toàn trên thiết bị của bạn.</li>
+                <li>Chúng tôi KHÔNG yêu cầu tạo tài khoản, đăng nhập bằng email, số điện thoại hay mạng xã hội.</li>
+                <li>Tất cả thông tin về những chú chim, cân nặng, nhật ký ảnh, lịch nhắc nhở và thông tin phối giống đều được lưu trữ trực tiếp trong cơ sở dữ liệu SQLite cục bộ trên điện thoại của bạn.</li>
+                <li>Không có bất kỳ dữ liệu nào được tải lên máy chủ hoặc chia sẻ với bất kỳ bên thứ ba nào.</li>
+            </ul>
+
+            <h2>2. Quyền Truy Cập Trên Thiết Bị</h2>
+            <p>Để cung cấp các tính năng chăm sóc chim, Ứng dụng có thể yêu cầu các quyền sau trên thiết bị của bạn:</p>
+            <ul>
+                <li><strong>Quyền Thư viện ảnh / Camera (Image Gallery / Camera):</strong> Được sử dụng duy nhất khi người dùng chủ động chọn ảnh đại diện cho chim hoặc đính kèm ảnh vào nhật ký. Ảnh được lưu trữ trong thư mục riêng tư của ứng dụng trên thiết bị.</li>
+                <li><strong>Quyền Thông báo Cục bộ (Local Notifications):</strong> Được sử dụng để gửi thông báo nhắc nhở lịch cho ăn, thay nước và vệ sinh lồng đúng giờ theo cài đặt của bạn. Thông báo được xử lý 100% trên điện thoại, không qua máy chủ push notification.</li>
+            </ul>
+
+            <h2>3. Sao Lưu Và Phục Hồi Dữ Liệu</h2>
+            <p>Ứng dụng cung cấp tính năng xuất/nhập file sao lưu (.zip). Việc lưu trữ file sao lưu này trên Google Drive, USB hay máy tính cá nhân là hoàn toàn do người dùng chủ động kiểm soát.</p>
+
+            <h2>4. Tuân Thủ Chính Sách Google Play</h2>
+            <p>Ứng dụng tuân thủ nghiêm ngặt các quy định về quyền riêng tư và dữ liệu người dùng của Google Play Store.</p>
+
+            <h2>5. Liên Hệ</h2>
+            <div class="contact-box">
+                <p style="margin: 0;"><strong>Nếu bạn có bất kỳ câu hỏi nào về Chính sách Quyền riêng tư này, vui lòng liên hệ:</strong></p>
+                <p style="margin: 6px 0 0 0; color: var(--primary); font-weight: bold;">Email: support@birdcare.app</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

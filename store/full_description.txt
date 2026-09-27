@@ -1,0 +1,39 @@
+🐦 Chim Nhà - Ứng dụng chăm sóc chim cảnh & quản lý dòng giống 100% Offline!
+
+Bạn đang tìm kiếm một ứng dụng theo dõi sức khỏe, nhật ký chăm sóc và cẩm nang dinh dưỡng cho chú chim cưng của mình mà KHÔNG cần kết nối Internet? Chim Nhà chính là giải pháp hoàn hảo, bảo mật và hoàn toàn miễn phí dành cho bạn!
+
+✨ CÁC TÍNH NĂNG NỔI BẬT:
+
+1. 🏠 TRANG CHỦ & LỊCH CHĂM SÓC HÀNG NGÀY
+- Theo dõi nhanh trạng thái của chim.
+- Lịch nhắc việc hàng ngày: Cho ăn 🍚, Thay nước 💧, Dọn lồng 🧹, Cho tắm 🛁.
+
+2. 🐦 QUẢN LÝ NHIỀU CHÚ CHIM
+- Tạo hồ sơ chi tiết cho Yến phụng, Lovebird, Cockatiel, Finch, Canary, Vẹt...
+- Lưu giữ ngày sinh, ngày nuôi, màu sắc, cân nặng và hình ảnh đại diện.
+
+3. ❤️ THEO DÕI SỨC KHỎE & BIỂU ĐỒ CÂN NẶNG
+- Ghi nhận cân nặng, mức độ ăn uống, tinh thần và tình trạng phân.
+- Biểu đồ đường trực quan theo dõi biến động cân nặng theo thời gian.
+- Thuật toán cảnh báo thông minh khi chim giảm cân >10% hoặc ăn uống kém.
+
+4. 📷 NHẬT KÝ ẢNH & KỶ NIỆM
+- Lưu giữ những khoảnh khắc đáng yêu của chim.
+- Tải ảnh trực tiếp vào bộ nhớ bảo mật của ứng dụng.
+
+5. 🍎 THƯ VIỆN THỰC PHẨM AN TOÀN (40+ MÓN)
+- Phân loại rõ ràng: 🟢 An toàn, 🟡 Hạn chế, 🔴 Cực độc (Avocado, Chocolate, Coffee...).
+- Hướng dẫn chế biến, khẩu phần và lưu ý an toàn theo từng loại chim.
+
+6. 📚 THƯ VIỆN KIẾN THỨC CHĂM SÓC
+- Cẩm nang dành cho người mới: Dinh dưỡng, Vệ sinh lồng, Sức khỏe & Taming.
+
+7. 🥚 THEO DÕI SINH SẢN & GIA PHẢ (PEDIGREE)
+- Quản lý cặp phối giống, số lượng trứng ấp và ngày nở.
+- Biểu đồ gia phả dòng giống (bố, mẹ, con cái).
+
+8. 🔐 BẢO MẬT & SAO LƯU DỮ LIỆU
+- 100% Offline. Dữ liệu của bạn thuộc về bạn.
+- Xuất/Nhập file ZIP sao lưu an toàn khi đổi điện thoại.
+
+Hãy tải Chim Nhà ngay hôm nay để chăm sóc những chú chim cưng của bạn một cách khoa học và tận tâm nhất!
