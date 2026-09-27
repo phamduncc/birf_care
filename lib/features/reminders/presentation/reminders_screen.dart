@@ -52,7 +52,7 @@ class _RemindersScreenState extends State<RemindersScreen> {
     if (updated.isEnabled) {
       await NotificationService.instance.showNotification(
         id: updated.id.hashCode,
-        title: '⏰ Chim Nhà: Nhắc lịch',
+        title: 'Bird Care reminder',
         body: updated.title,
       );
     } else {
@@ -80,21 +80,21 @@ class _RemindersScreenState extends State<RemindersScreen> {
         return StatefulBuilder(
           builder: (context, setDialogState) {
             return AlertDialog(
-              title: Text(isEditing ? 'Chỉnh sửa nhắc lịch' : 'Thêm nhắc lịch mới'),
+              title: Text(isEditing ? 'Edit reminder' : 'New reminder'),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   TextField(
                     controller: titleController,
                     decoration: const InputDecoration(
-                      labelText: 'Tiêu đề nhắc nhở *',
-                      hintText: 'Cho Bông ăn, Thay nước...',
+                      labelText: 'Reminder title *',
+                      hintText: 'Feed Sunny, Change water...',
                       border: OutlineInputBorder(),
                     ),
                   ),
                   const SizedBox(height: 16),
                   ListTile(
-                    title: const Text('Giờ nhắc'),
+                    title: const Text('Time'),
                     trailing: Text(
                       selectedTime.format(context),
                       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.primary),
@@ -109,7 +109,7 @@ class _RemindersScreenState extends State<RemindersScreen> {
                 ],
               ),
               actions: [
-                TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Hủy')),
+                TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
                 ElevatedButton(
                   onPressed: () async {
                     if (titleController.text.trim().isEmpty) return;
@@ -131,7 +131,7 @@ class _RemindersScreenState extends State<RemindersScreen> {
                     if (mounted) Navigator.pop(ctx);
                     _loadReminders();
                   },
-                  child: const Text('Lưu'),
+                  child: const Text('Save'),
                 ),
               ],
             );
@@ -145,12 +145,12 @@ class _RemindersScreenState extends State<RemindersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Nhắc lịch chăm sóc (Local)'),
+        title: const Text('Care reminders'),
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _reminders.isEmpty
-              ? const Center(child: Text('Chưa có lịch nhắc nhở nào', style: TextStyle(color: Colors.grey)))
+              ? const Center(child: Text('No reminders yet', style: TextStyle(color: Colors.grey)))
               : ListView.builder(
                   padding: const EdgeInsets.all(12),
                   itemCount: _reminders.length,
@@ -173,7 +173,7 @@ class _RemindersScreenState extends State<RemindersScreen> {
                             color: item.isEnabled ? null : Colors.grey,
                           ),
                         ),
-                        subtitle: Text('Hàng ngày vào lúc ${item.time}', style: const TextStyle(fontSize: 12)),
+                        subtitle: Text('Every day at ${item.time}', style: const TextStyle(fontSize: 12)),
                         trailing: Switch(
                           value: item.isEnabled,
                           activeColor: AppColors.primary,

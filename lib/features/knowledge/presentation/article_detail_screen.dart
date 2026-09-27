@@ -34,7 +34,7 @@ class ArticleDetailScreen extends StatelessWidget {
                 Icon(Icons.timer_outlined, size: 16, color: Colors.grey[600]),
                 const SizedBox(width: 4),
                 Text(
-                  '${article.readTimeMinutes} phút đọc',
+                  '${article.readTimeMinutes} min read',
                   style: TextStyle(color: Colors.grey[600], fontSize: 12),
                 ),
               ],

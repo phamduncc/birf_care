@@ -45,15 +45,15 @@ class HealthRuleEngine {
         final dropPercent = ((baselineWeight - currentWeight) / baselineWeight) * 100;
         if (dropPercent >= 10.0) {
           alerts.add(HealthAlert(
-            title: '⚠️ Cảnh báo giảm cân đột ngột!',
-            message: 'Cân nặng giảm ${dropPercent.toStringAsFixed(1)}% (từ ${baselineWeight.toStringAsFixed(1)}g xuống ${currentWeight.toStringAsFixed(1)}g) trong 7 ngày. Hãy theo dõi kỹ và liên hệ thú y.',
+            title: 'Sudden weight loss warning',
+            message: 'Weight dropped ${dropPercent.toStringAsFixed(1)}% (from ${baselineWeight.toStringAsFixed(1)}g to ${currentWeight.toStringAsFixed(1)}g) within 7 days. Monitor closely and contact a vet.',
             severity: HealthAlertSeverity.danger,
             date: latest.date,
           ));
         } else if (dropPercent >= 5.0) {
           alerts.add(HealthAlert(
-            title: '⚡ Nhắc nhở cân nặng giảm',
-            message: 'Cân nặng giảm nhẹ ${dropPercent.toStringAsFixed(1)}% trong 7 ngày qua.',
+            title: 'Weight loss reminder',
+            message: 'Weight dropped slightly by ${dropPercent.toStringAsFixed(1)}% over the past 7 days.',
             severity: HealthAlertSeverity.warning,
             date: latest.date,
           ));
@@ -66,8 +66,8 @@ class HealthRuleEngine {
       final recentLogs = sortedLogs.sublist(sortedLogs.length - 2);
       if (recentLogs.every((l) => l.appetite.toLowerCase() == 'poor' || l.appetite.toLowerCase() == 'kém')) {
         alerts.add(HealthAlert(
-          title: '⚠️ Ăn uống kém kéo dài',
-          message: 'Ghi nhận chim ăn uống kém 2 nhật ký liên tiếp. Kiểm tra thức ăn và tinh thần của chim.',
+          title: 'Poor appetite continues',
+          message: 'Poor appetite was recorded in 2 logs in a row. Check the food and the bird’s energy.',
           severity: HealthAlertSeverity.warning,
           date: recentLogs.last.date,
         ));
@@ -79,8 +79,8 @@ class HealthRuleEngine {
       final latest = sortedLogs.last;
       if (latest.droppings.toLowerCase() == 'abnormal' || latest.droppings.toLowerCase() == 'bất thường') {
         alerts.add(HealthAlert(
-          title: '⚠️ Phân bất thường',
-          message: 'Phân ghi nhận bất thường vào ngày ${latest.date}. Hãy vệ sinh khay và kiểm tra thức ăn tươi.',
+          title: 'Abnormal droppings',
+          message: 'Droppings were recorded as abnormal on ${latest.date}. Clean the tray and check fresh food.',
           severity: HealthAlertSeverity.warning,
           date: latest.date,
         ));

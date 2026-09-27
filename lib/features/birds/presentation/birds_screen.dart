@@ -57,7 +57,7 @@ class _BirdsScreenState extends State<BirdsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Danh sách chim nuôi'),
+        title: const Text('My birds'),
         elevation: 0,
       ),
       body: Column(
@@ -67,7 +67,7 @@ class _BirdsScreenState extends State<BirdsScreen> {
             padding: const EdgeInsets.all(12.0),
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Tìm theo tên hoặc loài...',
+                hintText: 'Search by name or species...',
                 prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
                 filled: true,
@@ -89,7 +89,7 @@ class _BirdsScreenState extends State<BirdsScreen> {
                             const Text('🐦', style: TextStyle(fontSize: 60)),
                             const SizedBox(height: 12),
                             Text(
-                              _birds.isEmpty ? 'Chưa có chú chim nào được tạo' : 'Không tìm thấy chú chim phù hợp',
+                              _birds.isEmpty ? 'No birds yet' : 'No matching birds',
                               style: const TextStyle(fontSize: 16, color: Colors.grey),
                             ),
                             const SizedBox(height: 16),
@@ -101,7 +101,7 @@ class _BirdsScreenState extends State<BirdsScreen> {
                                 ).then((_) => _loadBirds());
                               },
                               icon: const Icon(Icons.add),
-                              label: const Text('Thêm chú chim đầu tiên'),
+                              label: const Text('Add your first bird'),
                               style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary, foregroundColor: Colors.white),
                             ),
                           ],
@@ -133,9 +133,9 @@ class _BirdsScreenState extends State<BirdsScreen> {
                                   Container(
                                     padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                                     decoration: BoxDecoration(
-                                      color: bird.gender == 'Trống'
+                                      color: bird.gender == 'Male'
                                           ? AppColors.infoBlue.withOpacity(0.15)
-                                          : (bird.gender == 'Mái' ? Colors.pink.withOpacity(0.15) : Colors.grey.withOpacity(0.15)),
+                                          : (bird.gender == 'Female' ? Colors.pink.withOpacity(0.15) : Colors.grey.withOpacity(0.15)),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Text(
@@ -143,7 +143,7 @@ class _BirdsScreenState extends State<BirdsScreen> {
                                       style: TextStyle(
                                         fontSize: 11,
                                         fontWeight: FontWeight.bold,
-                                        color: bird.gender == 'Trống' ? AppColors.infoBlue : (bird.gender == 'Mái' ? Colors.pink : Colors.grey),
+                                        color: bird.gender == 'Male' ? AppColors.infoBlue : (bird.gender == 'Female' ? Colors.pink : Colors.grey),
                                       ),
                                     ),
                                   ),
@@ -179,7 +179,7 @@ class _BirdsScreenState extends State<BirdsScreen> {
           ).then((_) => _loadBirds());
         },
         icon: const Icon(Icons.add),
-        label: const Text('Thêm chim'),
+        label: const Text('Add bird'),
       ),
     );
   }

@@ -23,13 +23,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
       if (mounted) {
         await Share.shareXFiles(
           [XFile(zipFile.path)],
-          text: 'Sao lưu dữ liệu Chim Nhà (100% Offline Backup)',
+          text: 'Bird Care backup (100% offline)',
         );
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Lỗi sao lưu: $e'), backgroundColor: AppColors.dangerRed),
+          SnackBar(content: Text('Backup failed: $e'), backgroundColor: AppColors.dangerRed),
         );
       }
     } finally {
@@ -41,14 +41,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final confirm = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Xác nhận đặt lại dữ liệu'),
-        content: const Text('⚠️ Tất cả hồ sơ chim, nhật ký sức khỏe, nhật ký ảnh và lịch nhắc nhở sẽ bị xóa hoàn toàn. Bạn có chắc chắn?'),
+        title: const Text('Reset all data'),
+        content: const Text('This permanently deletes every bird profile, health log, diary entry, and reminder. Continue?'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Hủy')),
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
           ElevatedButton(
             onPressed: () => Navigator.pop(ctx, true),
             style: ElevatedButton.styleFrom(backgroundColor: AppColors.dangerRed),
-            child: const Text('Xóa toàn bộ'),
+            child: const Text('Delete everything'),
           ),
         ],
       ),
@@ -58,7 +58,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       await DatabaseHelper.instance.clearAllData();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Đã đặt lại dữ liệu sạch thành công!'), backgroundColor: AppColors.safeGreen),
+          const SnackBar(content: Text('All data has been reset'), backgroundColor: AppColors.safeGreen),
         );
       }
     }
@@ -68,7 +68,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cài đặt & Quyền riêng tư'),
+        title: const Text('Settings and privacy'),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
@@ -87,10 +87,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('100% Offline & Bảo mật', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                        Text('100% offline and private', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                         SizedBox(height: 2),
                         Text(
-                          'Dữ liệu của bạn nằm hoàn toàn trên thiết bị này. Không đăng nhập, không máy chủ, không thu thập dữ liệu.',
+                          'Your data stays on this device. No account, no server, and no data collection.',
                           style: TextStyle(fontSize: 12.5),
                         ),
                       ],
@@ -102,14 +102,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           const SizedBox(height: 20),
 
-          const Text('Giao diện & Cài đặt', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
+          const Text('Appearance', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
           const SizedBox(height: 8),
 
           Card(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
             child: SwitchListTile(
               secondary: Icon(widget.isDarkMode ? Icons.dark_mode : Icons.light_mode),
-              title: const Text('Chế độ Tối (Dark Mode)'),
+              title: const Text('Dark mode'),
               value: widget.isDarkMode,
               onChanged: (val) {
                 if (widget.onThemeChanged != null) {
@@ -120,7 +120,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
 
           const SizedBox(height: 20),
-          const Text('Sao lưu & Phục hồi dữ liệu', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
+          const Text('Backup and restore', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
           const SizedBox(height: 8),
 
           Card(
@@ -129,16 +129,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
               children: [
                 ListTile(
                   leading: const Icon(Icons.cloud_upload_outlined, color: AppColors.primary),
-                  title: const Text('Xuất file Sao lưu (.zip)'),
-                  subtitle: const Text('Lưu file nén chứa DB & ảnh lên Google Drive, Zalo hoặc máy tính'),
+                  title: const Text('Export backup (.zip)'),
+                  subtitle: const Text('Save the database and photos to Drive, a computer, or another device'),
                   trailing: _isExporting ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2)) : const Icon(Icons.chevron_right),
                   onTap: _exportBackup,
                 ),
                 const Divider(height: 1),
                 ListTile(
                   leading: const Icon(Icons.delete_forever_outlined, color: AppColors.dangerRed),
-                  title: const Text('Đặt lại toàn bộ dữ liệu'),
-                  subtitle: const Text('Xóa sạch dữ liệu thử nghiệm về ban đầu'),
+                  title: const Text('Reset all data'),
+                  subtitle: const Text('Erase everything and start over'),
                   onTap: _resetAllData,
                 ),
               ],
@@ -151,9 +151,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Center(
             child: Column(
               children: [
-                Text('🐦 Chim Nhà Offline', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                Text('Bird Care', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                 SizedBox(height: 4),
-                Text('Phiên bản 1.0.0 (Release Build)', style: TextStyle(color: Colors.grey, fontSize: 12)),
+                Text('Version 1.0.0', style: TextStyle(color: Colors.grey, fontSize: 12)),
               ],
             ),
           ),

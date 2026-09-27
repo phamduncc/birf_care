@@ -56,7 +56,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Nhật ký ảnh & Kỷ niệm'),
+        title: const Text('Photo diary'),
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -67,7 +67,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                     children: [
                       const Icon(Icons.photo_library_outlined, size: 60, color: Colors.grey),
                       const SizedBox(height: 12),
-                      const Text('Chưa có nhật ký kỷ niệm nào', style: TextStyle(color: Colors.grey, fontSize: 16)),
+                      const Text('No diary entries yet', style: TextStyle(color: Colors.grey, fontSize: 16)),
                       const SizedBox(height: 16),
                       ElevatedButton.icon(
                         onPressed: () {
@@ -77,7 +77,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                           ).then((_) => _loadData());
                         },
                         icon: const Icon(Icons.add_a_photo),
-                        label: const Text('Tạo nhật ký đầu tiên'),
+                        label: const Text('Create the first entry'),
                         style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary, foregroundColor: Colors.white),
                       ),
                     ],
@@ -111,7 +111,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      bird?.name ?? 'Chim',
+                                      bird?.name ?? 'Bird',
                                       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                                     ),
                                     Text(
@@ -181,7 +181,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
           ).then((_) => _loadData());
         },
         icon: const Icon(Icons.add_a_photo),
-        label: const Text('Thêm nhật ký'),
+        label: const Text('Add entry'),
       ),
     );
   }

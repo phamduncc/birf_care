@@ -29,8 +29,8 @@ class _AddHealthLogScreenState extends State<AddHealthLogScreen> {
   void initState() {
     super.initState();
     _weightController = TextEditingController(text: widget.bird.weight?.toString() ?? '');
-    _featherController = TextEditingController(text: 'Mượt mà, không rụng bất thường');
-    _beakLegsController = TextEditingController(text: 'Mỏ bóng, vảy chân láng');
+    _featherController = TextEditingController(text: 'Smooth, no unusual shedding');
+    _beakLegsController = TextEditingController(text: 'Shiny beak, smooth leg scales');
     _notesController = TextEditingController();
   }
 
@@ -58,7 +58,7 @@ class _AddHealthLogScreenState extends State<AddHealthLogScreen> {
 
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Đã lưu nhật ký sức khỏe!'), backgroundColor: AppColors.safeGreen),
+        const SnackBar(content: Text('Health log saved'), backgroundColor: AppColors.safeGreen),
       );
       Navigator.pop(context, true);
     }
@@ -68,7 +68,7 @@ class _AddHealthLogScreenState extends State<AddHealthLogScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ghi sức khỏe: ${widget.bird.name}'),
+        title: Text('Health log: ${widget.bird.name}'),
         actions: [
           IconButton(
             icon: const Icon(Icons.check),
@@ -87,7 +87,7 @@ class _AddHealthLogScreenState extends State<AddHealthLogScreen> {
               ListTile(
                 contentPadding: EdgeInsets.zero,
                 leading: const Icon(Icons.calendar_today, color: AppColors.primary),
-                title: const Text('Ngày ghi nhận', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('Log date', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(_date),
                 trailing: TextButton(
                   onPressed: () async {
@@ -101,7 +101,7 @@ class _AddHealthLogScreenState extends State<AddHealthLogScreen> {
                       setState(() => _date = picked.toString().split(' ')[0]);
                     }
                   },
-                  child: const Text('Chọn ngày'),
+                  child: const Text('Pick date'),
                 ),
               ),
               const Divider(),
@@ -112,55 +112,55 @@ class _AddHealthLogScreenState extends State<AddHealthLogScreen> {
                 controller: _weightController,
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 decoration: const InputDecoration(
-                  labelText: 'Cân nặng hôm nay (gam) *',
+                  labelText: 'Today’s weight (grams) *',
                   border: OutlineInputBorder(),
                   suffixText: 'g',
                   prefixIcon: Icon(Icons.monitor_weight),
                 ),
                 validator: (val) {
-                  if (val == null || val.trim().isEmpty) return 'Vui lòng nhập cân nặng';
-                  if (double.tryParse(val.trim()) == null) return 'Cân nặng không hợp lệ';
+                  if (val == null || val.trim().isEmpty) return 'Please enter a weight';
+                  if (double.tryParse(val.trim()) == null) return 'Enter a valid weight';
                   return null;
                 },
               ),
               const SizedBox(height: 20),
 
               // Appetite Choice
-              const Text('Mức độ ăn uống:', style: TextStyle(fontWeight: FontWeight.bold)),
+              const Text('Appetite:', style: TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
               Row(
                 children: [
-                  _buildOptionChip('Kém 🟡', 'Poor', _appetite, (val) => setState(() => _appetite = val)),
+                  _buildOptionChip('Poor', 'Poor', _appetite, (val) => setState(() => _appetite = val)),
                   const SizedBox(width: 8),
-                  _buildOptionChip('Bình thường 🟢', 'Normal', _appetite, (val) => setState(() => _appetite = val)),
+                  _buildOptionChip('Normal', 'Normal', _appetite, (val) => setState(() => _appetite = val)),
                   const SizedBox(width: 8),
-                  _buildOptionChip('Tốt / Ăn khỏe ❤️', 'Good', _appetite, (val) => setState(() => _appetite = val)),
+                  _buildOptionChip('Good', 'Good', _appetite, (val) => setState(() => _appetite = val)),
                 ],
               ),
               const SizedBox(height: 16),
 
               // Activity Choice
-              const Text('Hoạt động / Tinh thần:', style: TextStyle(fontWeight: FontWeight.bold)),
+              const Text('Activity:', style: TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
               Row(
                 children: [
-                  _buildOptionChip('Ủ rủ / Ủ lông 🟡', 'Poor', _activity, (val) => setState(() => _activity = val)),
+                  _buildOptionChip('Low', 'Poor', _activity, (val) => setState(() => _activity = val)),
                   const SizedBox(width: 8),
-                  _buildOptionChip('Bình thường 🟢', 'Normal', _activity, (val) => setState(() => _activity = val)),
+                  _buildOptionChip('Normal', 'Normal', _activity, (val) => setState(() => _activity = val)),
                   const SizedBox(width: 8),
-                  _buildOptionChip('Linh hoạt / Hót nhiều ❤️', 'Good', _activity, (val) => setState(() => _activity = val)),
+                  _buildOptionChip('Active', 'Good', _activity, (val) => setState(() => _activity = val)),
                 ],
               ),
               const SizedBox(height: 16),
 
               // Droppings Status
-              const Text('Tình trạng phân:', style: TextStyle(fontWeight: FontWeight.bold)),
+              const Text('Droppings:', style: TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
               Row(
                 children: [
-                  _buildOptionChip('Bình thường (Khuôn đẹp) 🟢', 'Normal', _droppings, (val) => setState(() => _droppings = val)),
+                  _buildOptionChip('Normal', 'Normal', _droppings, (val) => setState(() => _droppings = val)),
                   const SizedBox(width: 8),
-                  _buildOptionChip('Bất thường / Lỏng 🔴', 'Abnormal', _droppings, (val) => setState(() => _droppings = val)),
+                  _buildOptionChip('Abnormal', 'Abnormal', _droppings, (val) => setState(() => _droppings = val)),
                 ],
               ),
               const SizedBox(height: 20),
@@ -169,7 +169,7 @@ class _AddHealthLogScreenState extends State<AddHealthLogScreen> {
               TextFormField(
                 controller: _featherController,
                 decoration: const InputDecoration(
-                  labelText: 'Tình trạng lông',
+                  labelText: 'Feather condition',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.blur_on),
                 ),
@@ -179,7 +179,7 @@ class _AddHealthLogScreenState extends State<AddHealthLogScreen> {
               TextFormField(
                 controller: _beakLegsController,
                 decoration: const InputDecoration(
-                  labelText: 'Mỏ, mắt & chân',
+                  labelText: 'Beak, eyes, and feet',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.remove_red_eye),
                 ),
@@ -191,7 +191,7 @@ class _AddHealthLogScreenState extends State<AddHealthLogScreen> {
                 controller: _notesController,
                 maxLines: 3,
                 decoration: const InputDecoration(
-                  labelText: 'Ghi chú thêm về sức khỏe',
+                  labelText: 'Extra health notes',
                   border: OutlineInputBorder(),
                   alignLabelWithHint: true,
                 ),
@@ -207,7 +207,7 @@ class _AddHealthLogScreenState extends State<AddHealthLogScreen> {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
                 icon: const Icon(Icons.save),
-                label: const Text('Lưu nhật ký sức khỏe'),
+                label: const Text('Save health log'),
               ),
             ],
           ),

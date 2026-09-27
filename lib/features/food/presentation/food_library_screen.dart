@@ -86,8 +86,8 @@ class _FoodLibraryScreenState extends State<FoodLibraryScreen> with SingleTicker
                     ),
                     child: Text(
                       food.category == 'Safe'
-                          ? '🟢 Có thể ăn'
-                          : (food.category == 'Limit' ? '🟡 Hạn chế' : '🔴 Cực độc'),
+                          ? 'Safe'
+                          : (food.category == 'Limit' ? 'Limit' : 'Toxic'),
                       style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 13),
                     ),
                   ),
@@ -113,13 +113,13 @@ class _FoodLibraryScreenState extends State<FoodLibraryScreen> with SingleTicker
                   style: const TextStyle(color: Colors.grey, fontStyle: FontStyle.italic, fontSize: 14),
                 ),
               const Divider(height: 24),
-              _buildDetailSection('📋 Khẩu phần khuyến nghị:', food.portion ?? 'Tham khảo'),
+              _buildDetailSection('Recommended portion', food.portion ?? 'See notes'),
               const SizedBox(height: 10),
-              _buildDetailSection('🔪 Cách chuẩn bị:', food.preparation ?? 'Rửa sạch trước khi cho ăn.'),
+              _buildDetailSection('How to prepare', food.preparation ?? 'Wash before feeding.'),
               const SizedBox(height: 10),
-              _buildDetailSection('⚠️ Lưu ý quan trọng:', food.warnings ?? 'Không có lưu ý đặc biệt.', isWarning: food.category != 'Safe'),
+              _buildDetailSection('Important notes', food.warnings ?? 'No special notes.', isWarning: food.category != 'Safe'),
               const SizedBox(height: 10),
-              _buildDetailSection('💡 Mô tả chi tiết:', food.description ?? ''),
+              _buildDetailSection('Details', food.description ?? ''),
               const SizedBox(height: 20),
             ],
           ),
@@ -143,16 +143,16 @@ class _FoodLibraryScreenState extends State<FoodLibraryScreen> with SingleTicker
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Thư viện thức ăn chim'),
+        title: const Text('Food library'),
         bottom: TabBar(
           controller: _tabController,
           onTap: _onCategoryChanged,
           indicatorColor: AppColors.secondary,
           tabs: const [
-            Tab(text: 'Tất cả'),
-            Tab(text: '🟢 An toàn'),
-            Tab(text: '🟡 Hạn chế'),
-            Tab(text: '🔴 Cực độc'),
+            Tab(text: 'All'),
+            Tab(text: 'Safe'),
+            Tab(text: 'Limit'),
+            Tab(text: 'Toxic'),
           ],
         ),
       ),
@@ -163,7 +163,7 @@ class _FoodLibraryScreenState extends State<FoodLibraryScreen> with SingleTicker
             padding: const EdgeInsets.all(12.0),
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Tìm kiếm thực phẩm (Ví dụ: Cà rốt, Táo, Chocolate)...',
+                hintText: 'Search foods (carrot, apple, chocolate)...',
                 prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
                 filled: true,
@@ -181,7 +181,7 @@ class _FoodLibraryScreenState extends State<FoodLibraryScreen> with SingleTicker
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : _foods.isEmpty
-                    ? const Center(child: Text('Không tìm thấy thực phẩm phù hợp', style: TextStyle(color: Colors.grey)))
+                    ? const Center(child: Text('No matching foods', style: TextStyle(color: Colors.grey)))
                     : ListView.builder(
                         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                         itemCount: _foods.length,

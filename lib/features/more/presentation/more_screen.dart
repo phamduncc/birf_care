@@ -15,27 +15,27 @@ class MoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Công cụ & Mở rộng'),
+        title: const Text('Tools'),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
           _buildMenuSection(
             context,
-            title: 'Tài nguyên & Hướng dẫn',
+            title: 'Guides',
             items: [
               _MenuItem(
                 icon: Icons.restaurant_menu,
                 color: AppColors.safeGreen,
-                title: 'Thư viện thức ăn chim',
-                subtitle: 'Tra cứu 40+ thực phẩm an toàn, hạn chế & độc hại',
+                title: 'Food library',
+                subtitle: 'Safe, limited, and toxic foods',
                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const FoodLibraryScreen())),
               ),
               _MenuItem(
                 icon: Icons.menu_book,
                 color: AppColors.infoBlue,
-                title: 'Thư viện kiến thức chăm sóc',
-                subtitle: 'Cẩm nang dinh dưỡng, vệ sinh, sức khỏe & taming',
+                title: 'Care guides',
+                subtitle: 'Diet, hygiene, health, and taming',
                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const KnowledgeBaseScreen())),
               ),
             ],
@@ -43,20 +43,20 @@ class MoreScreen extends StatelessWidget {
           const SizedBox(height: 16),
           _buildMenuSection(
             context,
-            title: 'Công cụ nuôi & Nhân giống',
+            title: 'Breeding tools',
             items: [
               _MenuItem(
                 icon: Icons.egg_outlined,
                 color: AppColors.secondary,
-                title: 'Theo dõi sinh sản & Ấp trứng',
-                subtitle: 'Quản lý cặp phối giống, số trứng & ngày nở',
+                title: 'Breeding and eggs',
+                subtitle: 'Pairs, clutch size, and hatch dates',
                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const BreedingScreen())),
               ),
               _MenuItem(
                 icon: Icons.alarm,
                 color: Colors.purple,
-                title: 'Nhắc lịch chăm sóc',
-                subtitle: 'Đặt thông báo local cho ăn, thay nước, dọn lồng',
+                title: 'Care reminders',
+                subtitle: 'Local alerts to feed, change water, and clean',
                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RemindersScreen())),
               ),
             ],
@@ -64,13 +64,13 @@ class MoreScreen extends StatelessWidget {
           const SizedBox(height: 16),
           _buildMenuSection(
             context,
-            title: 'Hệ thống',
+            title: 'System',
             items: [
               _MenuItem(
                 icon: Icons.settings_outlined,
                 color: Colors.blueGrey,
-                title: 'Cài đặt & Sao lưu offline',
-                subtitle: 'Đổi giao diện sáng/tối, xuất file zip sao lưu',
+                title: 'Settings and backup',
+                subtitle: 'Light or dark theme, and zip backup',
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => SettingsScreen(onThemeChanged: onThemeChanged, isDarkMode: isDarkMode)),

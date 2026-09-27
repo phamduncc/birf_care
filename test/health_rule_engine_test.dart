@@ -27,7 +27,7 @@ void main() {
 
       expect(alerts.isNotEmpty, true);
       expect(alerts.first.severity, HealthAlertSeverity.danger);
-      expect(alerts.first.title.contains('Cảnh báo'), true);
+      expect(alerts.first.title.contains('weight loss'), true);
     });
 
     test('Should trigger warning alert when appetite is poor for 2 consecutive logs', () {
@@ -51,7 +51,7 @@ void main() {
 
       final alerts = HealthRuleEngine.evaluateLogs(logs);
 
-      expect(alerts.any((a) => a.title.contains('Ăn uống kém')), true);
+      expect(alerts.any((a) => a.title.contains('Poor appetite')), true);
     });
   });
 }

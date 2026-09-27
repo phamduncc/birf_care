@@ -70,7 +70,7 @@ class _AddDiaryScreenState extends State<AddDiaryScreen> {
 
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Đã thêm nhật ký ảnh!'), backgroundColor: AppColors.safeGreen),
+        const SnackBar(content: Text('Diary entry saved'), backgroundColor: AppColors.safeGreen),
       );
       Navigator.pop(context, true);
     }
@@ -80,7 +80,7 @@ class _AddDiaryScreenState extends State<AddDiaryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Thêm nhật ký ảnh mới'),
+        title: const Text('New diary entry'),
         actions: [
           IconButton(
             icon: const Icon(Icons.check),
@@ -100,7 +100,7 @@ class _AddDiaryScreenState extends State<AddDiaryScreen> {
                 DropdownButtonFormField<Bird>(
                   value: _selectedBird,
                   decoration: const InputDecoration(
-                    labelText: 'Chọn chú chim *',
+                    labelText: 'Bird *',
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.pets),
                   ),
@@ -113,7 +113,7 @@ class _AddDiaryScreenState extends State<AddDiaryScreen> {
               ListTile(
                 contentPadding: EdgeInsets.zero,
                 leading: const Icon(Icons.calendar_today, color: AppColors.primary),
-                title: const Text('Ngày nhật ký', style: TextStyle(fontWeight: FontWeight.bold)),
+                title: const Text('Entry date', style: TextStyle(fontWeight: FontWeight.bold)),
                 subtitle: Text(_date),
                 trailing: TextButton(
                   onPressed: () async {
@@ -127,7 +127,7 @@ class _AddDiaryScreenState extends State<AddDiaryScreen> {
                       setState(() => _date = picked.toString().split(' ')[0]);
                     }
                   },
-                  child: const Text('Chọn ngày'),
+                  child: const Text('Pick date'),
                 ),
               ),
               const Divider(),
@@ -137,11 +137,11 @@ class _AddDiaryScreenState extends State<AddDiaryScreen> {
               TextFormField(
                 controller: _titleController,
                 decoration: const InputDecoration(
-                  labelText: 'Tiêu đề nhật ký *',
+                  labelText: 'Title *',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.title),
                 ),
-                validator: (val) => val == null || val.trim().isEmpty ? 'Vui lòng nhập tiêu đề' : null,
+                validator: (val) => val == null || val.trim().isEmpty ? 'Please enter a title' : null,
               ),
               const SizedBox(height: 16),
 
@@ -150,11 +150,11 @@ class _AddDiaryScreenState extends State<AddDiaryScreen> {
                 controller: _contentController,
                 maxLines: 4,
                 decoration: const InputDecoration(
-                  labelText: 'Nội dung chi tiết (Cảm xúc, hoạt động...) *',
+                  labelText: 'Details *',
                   border: OutlineInputBorder(),
                   alignLabelWithHint: true,
                 ),
-                validator: (val) => val == null || val.trim().isEmpty ? 'Vui lòng nhập nội dung nhật ký' : null,
+                validator: (val) => val == null || val.trim().isEmpty ? 'Please enter the diary text' : null,
               ),
               const SizedBox(height: 20),
 
@@ -162,11 +162,11 @@ class _AddDiaryScreenState extends State<AddDiaryScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Hình ảnh đính kèm:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                  const Text('Photos:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                   TextButton.icon(
                     onPressed: _pickPhotos,
                     icon: const Icon(Icons.add_a_photo),
-                    label: const Text('Chọn ảnh'),
+                    label: const Text('Choose photos'),
                   ),
                 ],
               ),
@@ -221,7 +221,7 @@ class _AddDiaryScreenState extends State<AddDiaryScreen> {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
                 icon: const Icon(Icons.save),
-                label: const Text('Lưu nhật ký ảnh'),
+                label: const Text('Save diary entry'),
               ),
             ],
           ),

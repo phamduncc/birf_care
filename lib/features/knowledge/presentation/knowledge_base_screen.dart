@@ -17,12 +17,12 @@ class _KnowledgeBaseScreenState extends State<KnowledgeBaseScreen> {
   String _selectedCategory = 'All';
 
   final List<Map<String, String>> _categories = [
-    {'id': 'All', 'label': 'Tất cả 📚'},
-    {'id': 'Basics', 'label': 'Cơ bản 🐦'},
-    {'id': 'Nutrition', 'label': 'Dinh dưỡng 🍚'},
-    {'id': 'Hygiene', 'label': 'Vệ sinh 🛁'},
-    {'id': 'Health', 'label': 'Sức khỏe ❤️'},
-    {'id': 'Behavior', 'label': 'Hành vi 🧠'},
+    {'id': 'All', 'label': 'All'},
+    {'id': 'Basics', 'label': 'Basics'},
+    {'id': 'Nutrition', 'label': 'Nutrition'},
+    {'id': 'Hygiene', 'label': 'Hygiene'},
+    {'id': 'Health', 'label': 'Health'},
+    {'id': 'Behavior', 'label': 'Behavior'},
   ];
 
   @override
@@ -44,7 +44,7 @@ class _KnowledgeBaseScreenState extends State<KnowledgeBaseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Thư viện kiến thức chăm sóc'),
+        title: const Text('Care guides'),
       ),
       body: Column(
         children: [
@@ -78,7 +78,7 @@ class _KnowledgeBaseScreenState extends State<KnowledgeBaseScreen> {
             child: _isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : _articles.isEmpty
-                    ? const Center(child: Text('Chưa có bài viết trong danh mục này', style: TextStyle(color: Colors.grey)))
+                    ? const Center(child: Text('No articles in this category', style: TextStyle(color: Colors.grey)))
                     : ListView.builder(
                         padding: const EdgeInsets.all(12),
                         itemCount: _articles.length,
@@ -98,7 +98,7 @@ class _KnowledgeBaseScreenState extends State<KnowledgeBaseScreen> {
                               ),
                               subtitle: Padding(
                                 padding: const EdgeInsets.only(top: 4.0),
-                                child: Text('${article.category} • ${article.readTimeMinutes} phút đọc', style: const TextStyle(fontSize: 12)),
+                                child: Text('${article.category} • ${article.readTimeMinutes} min read', style: const TextStyle(fontSize: 12)),
                               ),
                               trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                               onTap: () {

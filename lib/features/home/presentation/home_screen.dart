@@ -29,10 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Daily checklist state
   final Map<String, bool> _todayChecklist = {
-    'Cho ăn (Hạt & Rau tươi)': false,
-    'Thay nước uống sạch': false,
-    'Vệ sinh lót khay đĩa': false,
-    'Cho tắm nắng / Tắm nước': false,
+    'Feed (seeds and fresh greens)': false,
+    'Change the drinking water': false,
+    'Clean the tray liner': false,
+    'Sunbath or water bath': false,
   };
 
   @override
@@ -113,11 +113,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '🐦 Chim Nhà',
+                              'Bird Care',
                               style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              'Sổ chăm sóc chim 100% Offline',
+                              '100% offline bird care log',
                               style: TextStyle(color: Colors.white70, fontSize: 13),
                             ),
                           ],
@@ -157,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Row(
                                   children: [
                                     Text(
-                                      bird.gender == 'Trống' ? '♂ ' : (bird.gender == 'Mái' ? '♀ ' : '🐦 '),
+                                      bird.gender == 'Male' ? '♂ ' : (bird.gender == 'Female' ? '♀ ' : '🐦 '),
                                       style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                                     ),
                                     Text(
@@ -230,7 +230,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                                         ),
                                         Text(
-                                          '${_selectedBird!.species} • ${_selectedBird!.color ?? "Chưa ghi màu"}',
+                                          '${_selectedBird!.species} • ${_selectedBird!.color ?? "No color recorded"}',
                                           style: TextStyle(color: theme.textTheme.bodyMedium?.color, fontSize: 13),
                                         ),
                                       ],
@@ -243,9 +243,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
-                                  _buildStatItem('Cân nặng', '${_selectedBird!.weight?.toStringAsFixed(1) ?? "--"} g', Icons.monitor_weight_outlined),
-                                  _buildStatItem('Giới tính', _selectedBird!.gender, Icons.wc_outlined),
-                                  _buildStatItem('Trạng thái', _alerts.isEmpty ? 'Tốt ❤️' : 'Chú ý ⚠️', Icons.favorite_outline),
+                                  _buildStatItem('Weight', '${_selectedBird!.weight?.toStringAsFixed(1) ?? "--"} g', Icons.monitor_weight_outlined),
+                                  _buildStatItem('Sex', _selectedBird!.gender, Icons.wc_outlined),
+                                  _buildStatItem('Status', _alerts.isEmpty ? 'Good' : 'Check', Icons.favorite_outline),
                                 ],
                               ),
                             ],
@@ -265,13 +265,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             const Text('🐦', style: TextStyle(fontSize: 48)),
                             const SizedBox(height: 10),
                             const Text(
-                              'Chào mừng bạn đến với Chim Nhà! 👋',
+                              'Welcome to Bird Care',
                               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.primary),
                               textAlign: TextAlign.center,
                             ),
                             const SizedBox(height: 6),
                             const Text(
-                              'Chưa có thông tin chú chim nào. Hãy thêm chú chim đầu tiên của bạn để bắt đầu theo dõi sức khỏe, cân nặng & nhật ký hàng ngày!',
+                              'No birds yet. Add your first bird to start tracking health, weight, and a daily diary.',
                               style: TextStyle(fontSize: 13, color: Colors.grey),
                               textAlign: TextAlign.center,
                             ),
@@ -284,7 +284,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ).then((_) => _loadDashboardData());
                               },
                               icon: const Icon(Icons.add_circle_outline),
-                              label: const Text('Thêm chú chim đầu tiên'),
+                              label: const Text('Add your first bird'),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: AppColors.primary,
                                 foregroundColor: Colors.white,
@@ -349,7 +349,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   // Quick Action Shortcuts
                   const Text(
-                    'Thao tác nhanh',
+                    'Quick actions',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 10),
@@ -359,7 +359,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: _buildQuickActionButton(
                           icon: Icons.health_and_safety_outlined,
                           color: AppColors.primary,
-                          label: 'Ghi sức khỏe',
+                          label: 'Log health',
                           onTap: () {
                             if (_selectedBird != null) {
                               Navigator.push(
@@ -380,7 +380,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: _buildQuickActionButton(
                           icon: Icons.edit_note_outlined,
                           color: AppColors.secondary,
-                          label: 'Thêm nhật ký',
+                          label: 'Add diary',
                           onTap: () {
                             if (_selectedBird != null) {
                               Navigator.push(
@@ -401,7 +401,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: _buildQuickActionButton(
                           icon: Icons.restaurant_menu_outlined,
                           color: AppColors.safeGreen,
-                          label: 'Tra thức ăn',
+                          label: 'Food guide',
                           onTap: () {
                             Navigator.push(
                               context,
@@ -427,7 +427,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Text(
-                                'Lịch chăm sóc hôm nay',
+                                'Today’s care list',
                                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                               ),
                               Container(
@@ -437,7 +437,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Text(
-                                  '${_todayChecklist.values.where((v) => v).length}/${_todayChecklist.length} hoàn thành',
+                                  '${_todayChecklist.values.where((v) => v).length}/${_todayChecklist.length} done',
                                   style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold, fontSize: 12),
                                 ),
                               ),

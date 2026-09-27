@@ -4,288 +4,288 @@ class SeedData {
   static Future<void> populateSeedData(Database db) async {
     // 1. Populate Food Database
     final foods = [
-      // Safe 🟢
+      // Safe
       {
         'id': 'food_01',
-        'name': 'Cà rốt',
-        'english_name': 'Carrot',
+        'name': 'Carrot',
+        'english_name': null,
         'category': 'Safe',
-        'food_group': 'Rau củ',
-        'portion': '2-3 lát mỏng / tuần',
-        'preparation': 'Rửa sạch, bào sợi hoặc cắt hạt lựu mỏng. Có thể để nguyên củ nhỏ cho chim gặm.',
-        'warnings': 'Chứa nhiều Beta-carotene giúp lông bóng mượt.',
-        'description': 'Giàu vitamin A, tốt cho mắt, mỏ và lông chim.',
+        'food_group': 'Vegetables',
+        'portion': '2–3 thin slices / week',
+        'preparation': 'Wash, shred, or cut into thin pieces. A small whole piece can be left for the bird to nibble.',
+        'warnings': 'High in beta-carotene, which helps keep feathers glossy.',
+        'description': 'Rich in vitamin A, good for the eyes, beak, and feathers.',
       },
       {
         'id': 'food_02',
-        'name': 'Táo tây',
-        'english_name': 'Apple',
+        'name': 'Apple',
+        'english_name': null,
         'category': 'Safe',
-        'food_group': 'Trái cây',
-        'portion': '1 miếng nhỏ / lần (1-2 lần/tuần)',
-        'preparation': 'BỎ HOÀN TOÀN HẠT VÀ LÕI. Rửa sạch gọt vỏ hoặc giữ vỏ rửa kỹ.',
-        'warnings': '⚠️ Hạt táo chứa Cyanide cực độc với chim!',
-        'description': 'Giàu chất xơ và vitamin C, vị ngọt tự nhiên chim rất thích.',
+        'food_group': 'Fruit',
+        'portion': '1 small piece (1–2 times / week)',
+        'preparation': 'REMOVE ALL SEEDS AND THE CORE. Wash thoroughly; peel or scrub the skin well.',
+        'warnings': 'Apple seeds contain cyanide and are highly toxic to birds.',
+        'description': 'High in fiber and vitamin C, with a natural sweetness birds enjoy.',
       },
       {
         'id': 'food_03',
-        'name': 'Bông cải xanh',
-        'english_name': 'Broccoli',
+        'name': 'Broccoli',
+        'english_name': null,
         'category': 'Safe',
-        'food_group': 'Rau xanh',
-        'portion': '1 nhánh nhỏ / lần',
-        'preparation': 'Rửa kỹ dưới vòi nước, thái nhỏ búp hoặc để nguyên nhánh nhỏ.',
-        'warnings': 'Không cho ăn quá nhiều để tránh đầy hơi.',
-        'description': 'Rất giàu Canxi, Vitamin C và K.',
+        'food_group': 'Leafy greens',
+        'portion': '1 small floret',
+        'preparation': 'Rinse well, chop the florets, or offer a small whole floret.',
+        'warnings': 'Do not overfeed, or it may cause gas.',
+        'description': 'Very rich in calcium, vitamin C, and vitamin K.',
       },
       {
         'id': 'food_04',
-        'name': 'Chuối chín',
-        'english_name': 'Banana',
+        'name': 'Ripe banana',
+        'english_name': null,
         'category': 'Safe',
-        'food_group': 'Trái cây',
-        'portion': '1 lát mỏng / tuần',
-        'preparation': 'Bóc vỏ, cắt lát mỏng.',
-        'warnings': 'Nhiều đường, cho ăn vừa phải.',
-        'description': 'Giàu Kali và Vitamin B6, cung cấp năng lượng nhanh.',
+        'food_group': 'Fruit',
+        'portion': '1 thin slice / week',
+        'preparation': 'Peel and cut into thin slices.',
+        'warnings': 'High in sugar. Offer only in moderation.',
+        'description': 'Rich in potassium and vitamin B6, and provides quick energy.',
       },
       {
         'id': 'food_05',
-        'name': 'Rau bina / Cải bó xôi',
-        'english_name': 'Spinach',
+        'name': 'Spinach',
+        'english_name': null,
         'category': 'Safe',
-        'food_group': 'Rau xanh',
-        'portion': '1 lá nhỏ / tuần',
-        'preparation': 'Rửa thật sạch đất cát, thái nhỏ.',
-        'warnings': 'Chứa Oxalate, không nên cho ăn hàng ngày vì cản trở hấp thu Canxi.',
-        'description': 'Giàu Sắt và Axit Folic.',
+        'food_group': 'Leafy greens',
+        'portion': '1 small leaf / week',
+        'preparation': 'Wash thoroughly to remove soil, then chop.',
+        'warnings': 'Contains oxalate. Do not feed daily, because it can block calcium absorption.',
+        'description': 'Rich in iron and folic acid.',
       },
       {
         'id': 'food_06',
-        'name': 'Hạt kê',
-        'english_name': 'Millet',
+        'name': 'Millet',
+        'english_name': null,
         'category': 'Safe',
-        'food_group': 'Hạt dinh dưỡng',
-        'portion': 'Thức ăn chính hàng ngày hoặc chùm kê thưởng',
-        'preparation': 'Để trong cống ăn sạch, giữ khô ráo.',
-        'warnings': 'Cung cấp năng lượng chính cho Yến phụng, Finch, Cockatiel.',
-        'description': 'Dễ tiêu hóa, phù hợp cho hầu hết các loại chim cảnh.',
+        'food_group': 'Seeds',
+        'portion': 'Daily staple, or a millet spray as a treat',
+        'preparation': 'Serve in a clean food cup and keep it dry.',
+        'warnings': 'A main energy source for budgies, finches, and cockatiels.',
+        'description': 'Easy to digest and suitable for most pet birds.',
       },
       {
         'id': 'food_07',
-        'name': 'Dưa leo / Dưa chuột',
-        'english_name': 'Cucumber',
+        'name': 'Cucumber',
+        'english_name': null,
         'category': 'Safe',
-        'food_group': 'Rau củ',
-        'portion': '2 lát mỏng trong ngày nóng',
-        'preparation': 'Rửa sạch, gọt mỏng.',
-        'warnings': 'Chủ yếu là nước, cho ăn nhiều có thể gây phân lỏng nhẹ tạm thời.',
-        'description': 'Giải nhiệt tuyệt vời vào mùa hè.',
+        'food_group': 'Vegetables',
+        'portion': '2 thin slices on hot days',
+        'preparation': 'Wash and slice thinly.',
+        'warnings': 'Mostly water. Large amounts may cause temporarily loose droppings.',
+        'description': 'A good way to help birds stay cool in hot weather.',
       },
       {
         'id': 'food_08',
-        'name': 'Bắp ngô tươi',
-        'english_name': 'Sweetcorn',
+        'name': 'Fresh corn',
+        'english_name': null,
         'category': 'Safe',
-        'food_group': 'Rau củ',
-        'portion': '1/2 khúc nhỏ / tuần',
-        'preparation': 'Rửa sạch ngô tươi hoặc hấp chín nhẹ.',
-        'warnings': 'Chim rất thích gặm hạt ngô.',
-        'description': 'Giàu tinh bột và năng lượng lành mạnh.',
+        'food_group': 'Vegetables',
+        'portion': '1/2 small piece / week',
+        'preparation': 'Wash fresh corn, or steam it lightly.',
+        'warnings': 'Birds enjoy nibbling the kernels.',
+        'description': 'A healthy source of starch and energy.',
       },
-      // Limit 🟡
+      // Limit
       {
         'id': 'food_09',
-        'name': 'Hạt hướng dương',
-        'english_name': 'Sunflower Seeds',
+        'name': 'Sunflower seeds',
+        'english_name': null,
         'category': 'Limit',
-        'food_group': 'Hạt dinh dưỡng',
-        'portion': '3-5 hạt / ngày (chim lớn), 1-2 hạt (chim nhỏ)',
-        'preparation': 'Dùng hạt nguyên vỏ chưa rang muối.',
-        'warnings': '⚠️ Rất nhiều chất béo! Cho ăn nhiều gây béo phì và tổn thương gan.',
-        'description': 'Dùng làm phần thưởng khi huấn luyện.',
+        'food_group': 'Seeds',
+        'portion': '3–5 seeds / day (large birds), 1–2 seeds (small birds)',
+        'preparation': 'Use unsalted, unroasted seeds in the shell.',
+        'warnings': 'Very high in fat. Too many can cause obesity and liver damage.',
+        'description': 'Best used as a training treat.',
       },
       {
         'id': 'food_10',
-        'name': 'Đậu phộng / Lạc',
-        'english_name': 'Peanuts',
+        'name': 'Peanuts',
+        'english_name': null,
         'category': 'Limit',
-        'food_group': 'Hạt dinh dưỡng',
-        'portion': '1/2 hạt / tuần',
-        'preparation': 'Tách vỏ, chỉ cho ăn hạt sống không muối.',
-        'warnings': '⚠️ Vỏ lạc dễ chứa nấm mốc Aflatoxin gây độc gan.',
-        'description': 'Nhiều đạm và chất béo, cần kiểm soát lượng ăn.',
+        'food_group': 'Seeds',
+        'portion': '1/2 nut / week',
+        'preparation': 'Shell them, and offer only raw, unsalted nuts.',
+        'warnings': 'Shells can harbor aflatoxin mold, which is toxic to the liver.',
+        'description': 'High in protein and fat. Keep the amount small.',
       },
       {
         'id': 'food_11',
-        'name': 'Nho tươi',
-        'english_name': 'Grapes',
+        'name': 'Fresh grapes',
+        'english_name': null,
         'category': 'Limit',
-        'food_group': 'Trái cây',
-        'portion': '1/2 quả / tuần',
-        'preparation': 'Rửa thật sạch, bỏ hạt, cắt đôi.',
-        'warnings': 'Hàm lượng đường cao, cho ăn quá nhiều ảnh hưởng đường ruột.',
-        'description': 'Cung cấp độ ẩm và vị ngọt.',
+        'food_group': 'Fruit',
+        'portion': '1/2 grape / week',
+        'preparation': 'Wash thoroughly, remove seeds, and cut in half.',
+        'warnings': 'High in sugar. Too many can upset digestion.',
+        'description': 'Adds moisture and a sweet taste.',
       },
-      // Dangerous 🔴
+      // Dangerous
       {
         'id': 'food_12',
-        'name': 'Bơ (Avocado)',
-        'english_name': 'Avocado',
+        'name': 'Avocado',
+        'english_name': null,
         'category': 'Dangerous',
-        'food_group': 'Độc hại',
-        'portion': 'KHÔNG CHO ĂN',
-        'preparation': 'TUYỆT ĐỐI KHÔNG',
-        'warnings': '⛔ CỰC ĐỘC! Chứa độc tố Persin gây suy tim và tử vong nhanh ở chim!',
-        'description': 'Tất cả các phần của quả bơ đều nguy hiểm tính mạng đối với chim.',
+        'food_group': 'Toxic',
+        'portion': 'DO NOT FEED',
+        'preparation': 'NEVER OFFER',
+        'warnings': 'HIGHLY TOXIC. Contains persin, which can cause heart failure and rapid death in birds.',
+        'description': 'Every part of the avocado is life-threatening to birds.',
       },
       {
         'id': 'food_13',
-        'name': 'Chocolate / Ca cao',
-        'english_name': 'Chocolate',
+        'name': 'Chocolate',
+        'english_name': null,
         'category': 'Dangerous',
-        'food_group': 'Độc hại',
-        'portion': 'KHÔNG CHO ĂN',
-        'preparation': 'TUYỆT ĐỐI KHÔNG',
-        'warnings': '⛔ CỰC ĐỘC! Chứa Theobromine & Caffeine gây co giật, nôn mửa, tử vong.',
-        'description': 'Ảnh hưởng trực tiếp đến hệ thần kinh và tim mạch của chim.',
+        'food_group': 'Toxic',
+        'portion': 'DO NOT FEED',
+        'preparation': 'NEVER OFFER',
+        'warnings': 'HIGHLY TOXIC. Theobromine and caffeine can cause seizures, vomiting, and death.',
+        'description': 'Directly affects a bird’s nervous system and heart.',
       },
       {
         'id': 'food_14',
-        'name': 'Cà phê & Đồ uống có cồn/caffeine',
-        'english_name': 'Coffee & Alcohol',
+        'name': 'Coffee, alcohol, and caffeinated drinks',
+        'english_name': null,
         'category': 'Dangerous',
-        'food_group': 'Độc hại',
-        'portion': 'KHÔNG CHO ĂN',
-        'preparation': 'TUYỆT ĐỐI KHÔNG',
-        'warnings': '⛔ CỰC ĐỘC! Gây suy tim, tăng nhịp tim cấp tính.',
-        'description': 'Chim có kích thước nhỏ nên phản ứng với caffeine vô cùng nghiêm trọng.',
+        'food_group': 'Toxic',
+        'portion': 'DO NOT FEED',
+        'preparation': 'NEVER OFFER',
+        'warnings': 'HIGHLY TOXIC. Can cause heart failure and a sudden rise in heart rate.',
+        'description': 'Because birds are small, caffeine affects them very severely.',
       },
       {
         'id': 'food_15',
-        'name': 'Hành & Tỏi',
-        'english_name': 'Onions & Garlic',
+        'name': 'Onion and garlic',
+        'english_name': null,
         'category': 'Dangerous',
-        'food_group': 'Độc hại',
-        'portion': 'KHÔNG CHO ĂN',
-        'preparation': 'TUYỆT ĐỐI KHÔNG',
-        'warnings': '⛔ ĐỘC HẠI! Phá hủy hồng cầu gây thiếu máu cấp ở chim.',
-        'description': 'Chứa hợp chất Sulfur gây hoại tử tế bào máu.',
+        'food_group': 'Toxic',
+        'portion': 'DO NOT FEED',
+        'preparation': 'NEVER OFFER',
+        'warnings': 'TOXIC. Destroys red blood cells and can cause acute anemia in birds.',
+        'description': 'Contains sulfur compounds that damage blood cells.',
       },
     ];
 
     for (var f in foods) {
-      await db.insert('foods', f);
+      await db.insert('foods', f, conflictAlgorithm: ConflictAlgorithm.replace);
     }
 
     // 4. Populate Articles (Knowledge Base)
     final articles = [
       {
         'id': 'art_01',
-        'title': 'Hướng dẫn đón chú chim mới về nhà',
+        'title': 'Bringing a new bird home',
         'category': 'Basics',
         'read_time_minutes': 4,
-        'content': '''# Hướng dẫn đón chú chim mới về nhà
+        'content': '''# Bringing a new bird home
 
-Khi mới đưa một chú chim về nhà, chim thường cảm thấy hoảng sợ và căng thẳng (stress) do thay đổi môi trường sống.
+A newly arrived bird is often frightened and stressed by the change of environment.
 
-## 1. Chuẩn bị lồng nuôi trước
-- Đặt lồng ở nơi yên tĩnh, ít người qua lại trong 24-48 giờ đầu.
-- Tránh ánh nắng gay gắt chiếu trực tiếp hoặc luồng gió lùa mạnh.
-- Chuẩn bị sẵn nước sạch và thức ăn quen thuộc của chim.
+## 1. Prepare the cage first
+- Place the cage in a quiet spot with little foot traffic for the first 24–48 hours.
+- Avoid harsh direct sun and strong drafts.
+- Have clean water and the bird’s familiar food ready.
 
-## 2. Giúp chim tĩnh dưỡng
-- Không cố gắng bắt hoặc vuốt ve chim ngay ngày đầu tiên.
-- Phủ một chiếc khăn mỏng quanh 3 mặt lồng để chim cảm thấy an toàn.
-- Nói chuyện với chim bằng giọng trầm ấm, nhẹ nhàng.
+## 2. Let the bird settle
+- Do not try to catch or pet the bird on the first day.
+- Drape a light cloth over three sides of the cage so the bird feels safer.
+- Talk in a low, warm, gentle voice.
 
-## 3. Theo dõi phân và ăn uống
-- Quan sát xem chim có xuống ăn và uống nước không.
-- Phân chim ngày đầu có thể hơi lỏng do stress, nhưng phải trở lại bình thường sau 24-36 giờ.
+## 3. Watch droppings, food, and water
+- Check that the bird comes down to eat and drink.
+- Droppings may be slightly loose on the first day because of stress, but they should return to normal within 24–36 hours.
 ''',
       },
       {
         'id': 'art_02',
-        'title': 'Chế độ dinh dưỡng cân bằng cho chim cảnh',
+        'title': 'A balanced diet for pet birds',
         'category': 'Nutrition',
         'read_time_minutes': 5,
-        'content': '''# Chế độ dinh dưỡng cân bằng cho chim cảnh
+        'content': '''# A balanced diet for pet birds
 
-Một chế độ ăn chỉ toàn hạt đơn thuần (Seed-only diet) thường thiếu hụt Vitamin A, Canxi và quá nhiều chất béo.
+A seed-only diet is often low in vitamin A and calcium, and too high in fat.
 
-## 1. Tỷ lệ dinh dưỡng khuyến nghị
-- **60% Hạt / Pellet chất lượng cao**: Hạt kê, yến mạch, phalaris hoặc hạt tổng hợp.
-- **30% Rau củ tươi**: Cà rốt, bông cải xanh, rau cải tươi, ngô ngọt.
-- **10% Trái cây & Bổ sung**: Táo, chuối, dưa leo, mai mực (bổ sung Canxi).
+## 1. Suggested balance
+- **60% quality seed or pellets**: millet, oats, canary seed, or a formulated mix.
+- **30% fresh vegetables**: carrot, broccoli, leafy greens, sweet corn.
+- **10% fruit and extras**: apple, banana, cucumber, and a cuttlebone for calcium.
 
-## 2. Bổ sung Canxi & Khoáng chất
-- Luôn treo **Mai mực (Cuttlebone)** hoặc đá liếm khoáng trong lồng để chim mài mỏ và bổ sung Canxi cho xương & vỏ trứng.
-- Cung cấp nước sạch thay mới mỗi ngày 1-2 lần.
+## 2. Calcium and minerals
+- Always hang a **cuttlebone** or mineral block in the cage so the bird can wear the beak and get calcium for bones and eggshells.
+- Provide fresh water, replaced once or twice a day.
 ''',
       },
       {
         'id': 'art_03',
-        'title': 'Quy trình vệ sinh lồng và khử khuẩn an toàn',
+        'title': 'Safe cage cleaning and disinfection',
         'category': 'Hygiene',
         'read_time_minutes': 3,
-        'content': '''# Quy trình vệ sinh lồng và khử khuẩn an toàn
+        'content': '''# Safe cage cleaning and disinfection
 
-Vệ sinh sạch sẽ giúp ngăn ngừa 90% các bệnh về đường hô hấp và nấm ở chim cảnh.
+Clean housing prevents most respiratory problems and fungal issues in pet birds.
 
-## Lịch vệ sinh:
-1. **Hàng ngày**:
-   - Thay giấy lót đáy lồng.
-   - Rửa sạch cống nước và cống thức ăn.
-2. **Hàng tuần**:
-   - Rửa sạch cầu đậu (perch) loại bỏ phân bám dính.
-   - Lau chùi nan lồng bằng nước ấm.
-3. **Hàng tháng**:
-   - Khử khuẩn toàn bộ lồng bằng giấm ăn pha loãng (tỷ lệ 1:1) hoặc dung dịch khử trùng chuyên dụng an toàn cho thú cưng.
-   - Phơi khô lồng dưới ánh nắng mặt trời trước khi cho chim vào lại.
+## Cleaning schedule
+1. **Daily**
+   - Change the cage liner.
+   - Wash water and food cups.
+2. **Weekly**
+   - Scrub perches to remove stuck droppings.
+   - Wipe cage bars with warm water.
+3. **Monthly**
+   - Disinfect the whole cage with diluted white vinegar (1:1) or a pet-safe disinfectant.
+   - Dry the cage in sunlight before putting the bird back.
 ''',
       },
       {
         'id': 'art_04',
-        'title': 'Nhận biết sớm các dấu hiệu chim bị ốm',
+        'title': 'Early signs that a bird is sick',
         'category': 'Health',
         'read_time_minutes': 4,
-        'content': '''# Nhận biết sớm các dấu hiệu chim bị ốm
+        'content': '''# Early signs that a bird is sick
 
-Chim là loài động vật giấu bệnh rất giỏi trong tự nhiên. Khi chim lộ rõ dấu hiệu ốm, bệnh thường đã ở giai đoạn nghiêm trọng.
+Birds hide illness well. By the time signs are obvious, the problem is often already serious.
 
-## ⚠️ Các dấu hiệu cảnh báo khẩn cấp:
-- **Xù lông liên tục**: Chim đứng co cụm, xù lông gục đầu vào cánh cả ngày.
-- **Giảm cân nhanh**: Thần ngực trơ xương (lườn lẹm), cân nặng giảm >10%.
-- **Thở gấp, há miệng**: Thở đuôi nhịp nhàng giật giật, có tiếng khè khè.
-- **Phân bất thường**: Phân dính máu, phân toàn nước kéo dài >1 ngày.
-- **Mắt chớp chậm, chảy nước mũi**: Mũi ướt dính thức ăn.
+## Emergency warning signs
+- **Constant fluffing**: the bird stays huddled, feathers puffed, head tucked into a wing all day.
+- **Rapid weight loss**: the keel bone feels sharp, or weight drops more than 10%.
+- **Labored breathing**: tail bobbing, open-mouth breathing, or wheezing.
+- **Abnormal droppings**: blood, or watery droppings lasting more than a day.
+- **Slow blinking or a wet nose**: discharge sticking food around the nostrils.
 
-## Việc cần làm ngay:
-1. Sưởi ấm cho chim bằng đèn vàng (30W) ở khoảng cách an toàn.
-2. Đưa chim đến bác sĩ thú y chuyên về chim cảnh càng sớm càng tốt.
+## What to do right away
+1. Keep the bird warm with a low-wattage lamp at a safe distance.
+2. See an avian veterinarian as soon as possible.
 ''',
       },
       {
         'id': 'art_05',
-        'title': 'Taming & Huấn luyện chim làm quen chủ',
+        'title': 'Taming a bird to step up',
         'category': 'Behavior',
         'read_time_minutes': 4,
-        'content': '''# Taming & Huấn luyện chim làm quen chủ
+        'content': '''# Taming a bird to step up
 
-Huấn luyện chim cần sự kiên nhẫn từng ngày, không được nóng vội.
+Training takes daily patience. Do not rush it.
 
-## Các bước thuần chim (Step Up):
-1. **Bắt đầu bằng thức ăn**: Tìm món chim yêu thích nhất (như chùm kê hoặc hạt hướng dương).
-2. **Đút ăn qua nan lồng**: Đút hạt qua kẽ lồng để chim chủ động tiến lại gần tay bạn.
-3. **Đưa tay vào lồng**: Đặt tay đứng yên không di chuyển đột ngột.
-4. **Lệnh "Step Up"**: Đặt nhẹ ngón tay trước ngực chim, hô nhẹ "Step up" để chim bước lên ngón tay.
-5. **Thưởng ngay lập tức**: Thưởng hạt và khen ngợi bằng giọng vui vẻ mỗi khi chim làm đúng.
+## Step-up training
+1. **Start with food**: find the favorite treat, such as a millet spray or a sunflower seed.
+2. **Offer it through the bars**: let the bird choose to come toward your hand.
+3. **Rest your hand in the cage**: keep it still, with no sudden movement.
+4. **The “step up” cue**: place a finger gently in front of the chest and say “step up” so the bird steps onto it.
+5. **Reward immediately**: give a seed and praise in a cheerful voice every time the bird does it.
 ''',
       },
     ];
 
     for (var a in articles) {
-      await db.insert('articles', a);
+      await db.insert('articles', a, conflictAlgorithm: ConflictAlgorithm.replace);
     }
 
     // 5. Default Care Reminders
@@ -293,7 +293,7 @@ Huấn luyện chim cần sự kiên nhẫn từng ngày, không được nóng 
       {
         'id': 'rem_01',
         'bird_id': null,
-        'title': 'Cho chim ăn & kiểm tra cống hạt',
+        'title': 'Feed the bird and check the seed cup',
         'time': '08:00',
         'repeat_days': '1,2,3,4,5,6,7',
         'is_enabled': 1,
@@ -302,7 +302,7 @@ Huấn luyện chim cần sự kiên nhẫn từng ngày, không được nóng 
       {
         'id': 'rem_02',
         'bird_id': null,
-        'title': 'Thay nước uống sạch',
+        'title': 'Change the drinking water',
         'time': '12:00',
         'repeat_days': '1,2,3,4,5,6,7',
         'is_enabled': 1,
@@ -311,7 +311,7 @@ Huấn luyện chim cần sự kiên nhẫn từng ngày, không được nóng 
       {
         'id': 'rem_03',
         'bird_id': null,
-        'title': 'Dọn lót khay đáy lồng',
+        'title': 'Clean the cage tray liner',
         'time': '18:00',
         'repeat_days': '1,2,3,4,5,6,7',
         'is_enabled': 1,
@@ -320,7 +320,7 @@ Huấn luyện chim cần sự kiên nhẫn từng ngày, không được nóng 
     ];
 
     for (var r in reminders) {
-      await db.insert('reminders', r);
+      await db.insert('reminders', r, conflictAlgorithm: ConflictAlgorithm.replace);
     }
   }
 }

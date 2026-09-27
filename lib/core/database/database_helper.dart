@@ -30,9 +30,18 @@ class DatabaseHelper {
 
     return await openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: _createDB,
+      onUpgrade: _upgradeDB,
     );
+  }
+
+  Future<void> _upgradeDB(Database db, int oldVersion, int newVersion) async {
+    if (oldVersion < 2) {
+      await db.execute("UPDATE birds SET gender = 'Male' WHERE gender = 'Trống'");
+      await db.execute("UPDATE birds SET gender = 'Female' WHERE gender = 'Mái'");
+      await SeedData.populateSeedData(db);
+    }
   }
 
   Future<void> _createDB(Database db, int version) async {

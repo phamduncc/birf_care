@@ -21,7 +21,7 @@ class _AddEditBirdScreenState extends State<AddEditBirdScreen> {
   late TextEditingController _weightController;
   late TextEditingController _notesController;
 
-  String _gender = 'Mái';
+  String _gender = 'Female';
   String? _birthDate;
   String? _adoptDate;
   String? _avatarPath;
@@ -31,14 +31,14 @@ class _AddEditBirdScreenState extends State<AddEditBirdScreen> {
   List<Bird> _existingBirds = [];
 
   final List<String> _commonSpecies = [
-    'Yến phụng (Budgerigar)',
-    'Lovebird (Mẫu đơn)',
-    'Cockatiel (Vẹt má hồng)',
-    'Finch (Chim sẻ cảnh)',
-    'Canary (Yến hót)',
-    'Vẹt Sun Conure',
-    'Vẹt Monk / Quaker',
-    'Khác',
+    'Budgerigar',
+    'Lovebird',
+    'Cockatiel',
+    'Finch',
+    'Canary',
+    'Sun Conure',
+    'Monk / Quaker Parakeet',
+    'Other',
   ];
 
   @override
@@ -116,7 +116,7 @@ class _AddEditBirdScreenState extends State<AddEditBirdScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(isEditing ? 'Chỉnh sửa thông tin chim' : 'Thêm chú chim mới'),
+        title: Text(isEditing ? 'Edit bird' : 'Add a bird'),
         actions: [
           IconButton(
             icon: const Icon(Icons.check),
@@ -143,7 +143,7 @@ class _AddEditBirdScreenState extends State<AddEditBirdScreen> {
                           children: [
                             Icon(Icons.camera_alt, size: 30, color: AppColors.primary),
                             SizedBox(height: 4),
-                            Text('Thêm ảnh', style: TextStyle(fontSize: 10, color: AppColors.primary)),
+                            Text('Add photo', style: TextStyle(fontSize: 10, color: AppColors.primary)),
                           ],
                         )
                       : null,
@@ -155,19 +155,19 @@ class _AddEditBirdScreenState extends State<AddEditBirdScreen> {
               TextFormField(
                 controller: _nameController,
                 decoration: const InputDecoration(
-                  labelText: 'Tên chim *',
+                  labelText: 'Bird name *',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.pets),
                 ),
-                validator: (val) => val == null || val.trim().isEmpty ? 'Vui lòng nhập tên chú chim' : null,
+                validator: (val) => val == null || val.trim().isEmpty ? 'Please enter a name' : null,
               ),
               const SizedBox(height: 16),
 
               // Species Dropdown / Autocomplete
               DropdownButtonFormField<String>(
-                value: _commonSpecies.contains(_speciesController.text) ? _speciesController.text : 'Khác',
+                value: _commonSpecies.contains(_speciesController.text) ? _speciesController.text : 'Other',
                 decoration: const InputDecoration(
-                  labelText: 'Loài chim *',
+                  labelText: 'Species *',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.category),
                 ),
@@ -175,7 +175,7 @@ class _AddEditBirdScreenState extends State<AddEditBirdScreen> {
                 onChanged: (val) {
                   if (val != null) {
                     setState(() {
-                      if (val != 'Khác') {
+                      if (val != 'Other') {
                         _speciesController.text = val;
                       }
                     });
@@ -187,28 +187,28 @@ class _AddEditBirdScreenState extends State<AddEditBirdScreen> {
               // Gender Selector
               Row(
                 children: [
-                  const Text('Giới tính:', style: TextStyle(fontWeight: FontWeight.bold)),
+                  const Text('Sex:', style: TextStyle(fontWeight: FontWeight.bold)),
                   const SizedBox(width: 10),
                   ChoiceChip(
-                    label: const Text('♂ Trống'),
-                    selected: _gender == 'Trống',
+                    label: const Text('Male'),
+                    selected: _gender == 'Male',
                     selectedColor: AppColors.infoBlue.withOpacity(0.2),
                     onSelected: (selected) {
-                      if (selected) setState(() => _gender = 'Trống');
+                      if (selected) setState(() => _gender = 'Male');
                     },
                   ),
                   const SizedBox(width: 10),
                   ChoiceChip(
-                    label: const Text('♀ Mái'),
-                    selected: _gender == 'Mái',
+                    label: const Text('Female'),
+                    selected: _gender == 'Female',
                     selectedColor: Colors.pink.withOpacity(0.2),
                     onSelected: (selected) {
-                      if (selected) setState(() => _gender = 'Mái');
+                      if (selected) setState(() => _gender = 'Female');
                     },
                   ),
                   const SizedBox(width: 10),
                   ChoiceChip(
-                    label: const Text('Chưa rõ'),
+                    label: const Text('Unknown'),
                     selected: _gender == 'Unknown',
                     onSelected: (selected) {
                       if (selected) setState(() => _gender = 'Unknown');
@@ -226,7 +226,7 @@ class _AddEditBirdScreenState extends State<AddEditBirdScreen> {
                       controller: _weightController,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       decoration: const InputDecoration(
-                        labelText: 'Cân nặng (g)',
+                        labelText: 'Weight (g)',
                         border: OutlineInputBorder(),
                         suffixText: 'g',
                         prefixIcon: Icon(Icons.monitor_weight),
@@ -238,7 +238,7 @@ class _AddEditBirdScreenState extends State<AddEditBirdScreen> {
                     child: TextFormField(
                       controller: _colorController,
                       decoration: const InputDecoration(
-                        labelText: 'Màu sắc / Đột biến',
+                        labelText: 'Color / mutation',
                         border: OutlineInputBorder(),
                         prefixIcon: Icon(Icons.palette),
                       ),
@@ -256,11 +256,11 @@ class _AddEditBirdScreenState extends State<AddEditBirdScreen> {
                       child: DropdownButtonFormField<Bird>(
                         value: _selectedFather,
                         decoration: const InputDecoration(
-                          labelText: 'Chim Bố (♂)',
+                          labelText: 'Father',
                           border: OutlineInputBorder(),
                         ),
                         items: _existingBirds
-                            .where((b) => b.gender == 'Trống' || b.gender == 'Unknown')
+                            .where((b) => b.gender == 'Male' || b.gender == 'Unknown')
                             .map((b) => DropdownMenuItem(value: b, child: Text(b.name)))
                             .toList(),
                         onChanged: (val) => setState(() => _selectedFather = val),
@@ -271,11 +271,11 @@ class _AddEditBirdScreenState extends State<AddEditBirdScreen> {
                       child: DropdownButtonFormField<Bird>(
                         value: _selectedMother,
                         decoration: const InputDecoration(
-                          labelText: 'Chim Mẹ (♀)',
+                          labelText: 'Mother',
                           border: OutlineInputBorder(),
                         ),
                         items: _existingBirds
-                            .where((b) => b.gender == 'Mái' || b.gender == 'Unknown')
+                            .where((b) => b.gender == 'Female' || b.gender == 'Unknown')
                             .map((b) => DropdownMenuItem(value: b, child: Text(b.name)))
                             .toList(),
                         onChanged: (val) => setState(() => _selectedMother = val),
@@ -291,7 +291,7 @@ class _AddEditBirdScreenState extends State<AddEditBirdScreen> {
                 controller: _notesController,
                 maxLines: 3,
                 decoration: const InputDecoration(
-                  labelText: 'Ghi chú & Nguồn gốc',
+                  labelText: 'Notes and origin',
                   border: OutlineInputBorder(),
                   alignLabelWithHint: true,
                 ),
@@ -307,7 +307,7 @@ class _AddEditBirdScreenState extends State<AddEditBirdScreen> {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
                 icon: const Icon(Icons.save),
-                label: Text(isEditing ? 'Lưu cập nhật' : 'Lưu chú chim'),
+                label: Text(isEditing ? 'Save changes' : 'Save bird'),
               ),
             ],
           ),

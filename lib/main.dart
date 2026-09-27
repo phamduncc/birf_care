@@ -31,7 +31,7 @@ class _ChimNhaAppState extends State<ChimNhaApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Chim Nhà - Sổ Chăm Sóc Chim Offline',
+      title: 'Bird Care',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
@@ -82,22 +82,22 @@ class _MainNavigationContainerState extends State<MainNavigationContainer> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             activeIcon: Icon(Icons.home),
-            label: 'Trang chủ',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.pets_outlined),
             activeIcon: Icon(Icons.pets),
-            label: 'Chim nuôi',
+            label: 'Birds',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.photo_library_outlined),
             activeIcon: Icon(Icons.photo_library),
-            label: 'Nhật ký',
+            label: 'Diary',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.grid_view_outlined),
             activeIcon: Icon(Icons.grid_view),
-            label: 'Mở rộng',
+            label: 'More',
           ),
         ],
       ),

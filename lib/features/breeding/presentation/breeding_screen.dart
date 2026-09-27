@@ -62,25 +62,25 @@ class _BreedingScreenState extends State<BreedingScreen> {
         return StatefulBuilder(
           builder: (context, setDialogState) {
             return AlertDialog(
-              title: const Text('Ghép đôi sinh sản mới'),
+              title: const Text('New breeding pair'),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   DropdownButtonFormField<Bird>(
-                    decoration: const InputDecoration(labelText: 'Chim Bố (♂)'),
-                    items: birds.where((b) => b.gender == 'Trống' || b.gender == 'Unknown').map((b) => DropdownMenuItem(value: b, child: Text(b.name))).toList(),
+                    decoration: const InputDecoration(labelText: 'Father'),
+                    items: birds.where((b) => b.gender == 'Male' || b.gender == 'Unknown').map((b) => DropdownMenuItem(value: b, child: Text(b.name))).toList(),
                     onChanged: (val) => setDialogState(() => selectedMale = val),
                   ),
                   const SizedBox(height: 12),
                   DropdownButtonFormField<Bird>(
-                    decoration: const InputDecoration(labelText: 'Chim Mẹ (♀)'),
-                    items: birds.where((b) => b.gender == 'Mái' || b.gender == 'Unknown').map((b) => DropdownMenuItem(value: b, child: Text(b.name))).toList(),
+                    decoration: const InputDecoration(labelText: 'Mother'),
+                    items: birds.where((b) => b.gender == 'Female' || b.gender == 'Unknown').map((b) => DropdownMenuItem(value: b, child: Text(b.name))).toList(),
                     onChanged: (val) => setDialogState(() => selectedFemale = val),
                   ),
                 ],
               ),
               actions: [
-                TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Hủy')),
+                TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
                 ElevatedButton(
                   onPressed: () async {
                     if (selectedMale == null || selectedFemale == null) return;
@@ -94,7 +94,7 @@ class _BreedingScreenState extends State<BreedingScreen> {
                     if (mounted) Navigator.pop(ctx);
                     _loadBreedingData();
                   },
-                  child: const Text('Tạo cặp đôi'),
+                  child: const Text('Create pair'),
                 ),
               ],
             );
@@ -124,14 +124,14 @@ class _BreedingScreenState extends State<BreedingScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Ổ trứng cặp: ♂ ${male?.name ?? "Bố"} x ♀ ${female?.name ?? "Mẹ"}',
+                    'Clutch: ${male?.name ?? "Father"} x ${female?.name ?? "Mother"}',
                     style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Tổng số trứng: ${eggs.length}'),
+                      Text('Eggs: ${eggs.length}'),
                       ElevatedButton.icon(
                         onPressed: () async {
                           final newEgg = BreedingEgg(
@@ -146,26 +146,26 @@ class _BreedingScreenState extends State<BreedingScreen> {
                           setModalState(() => eggs = updated);
                         },
                         icon: const Icon(Icons.add, size: 16),
-                        label: const Text('Thêm trứng #'),
+                        label: const Text('Add egg'),
                       ),
                     ],
                   ),
                   const Divider(height: 20),
                   if (eggs.isEmpty)
-                    const Center(child: Padding(padding: EdgeInsets.all(20), child: Text('Chưa ghi nhận trứng đẻ nào'))),
+                    const Center(child: Padding(padding: EdgeInsets.all(20), child: Text('No eggs recorded yet'))),
                   ...eggs.map((egg) {
                     return ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: const CircleAvatar(backgroundColor: Colors.amber, child: Text('🥚')),
-                      title: Text('Trứng #${egg.eggNumber} • Ngày đẻ: ${egg.laidDate}'),
-                      subtitle: Text('Trạng thái: ${egg.status}'),
+                      title: Text('Egg #${egg.eggNumber} • Laid ${egg.laidDate}'),
+                      subtitle: Text('Status: ${egg.status}'),
                       trailing: DropdownButton<String>(
                         value: egg.status,
                         items: const [
-                          DropdownMenuItem(value: 'Incubating', child: Text('Đang ấp 🥚')),
-                          DropdownMenuItem(value: 'Hatched', child: Text('Đã nở 🐣')),
-                          DropdownMenuItem(value: 'Infertile', child: Text('Không phôi ⚪')),
-                          DropdownMenuItem(value: 'Broken', child: Text('Hỏng ❌')),
+                          DropdownMenuItem(value: 'Incubating', child: Text('Incubating')),
+                          DropdownMenuItem(value: 'Hatched', child: Text('Hatched')),
+                          DropdownMenuItem(value: 'Infertile', child: Text('Infertile')),
+                          DropdownMenuItem(value: 'Broken', child: Text('Broken')),
                         ],
                         onChanged: (val) async {
                           if (val != null) {
@@ -199,7 +199,7 @@ class _BreedingScreenState extends State<BreedingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Theo dõi sinh sản & Ấp trứng'),
+        title: const Text('Breeding and eggs'),
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -210,12 +210,12 @@ class _BreedingScreenState extends State<BreedingScreen> {
                     children: [
                       const Text('🥚', style: TextStyle(fontSize: 60)),
                       const SizedBox(height: 12),
-                      const Text('Chưa có cặp chim ghép đôi nào', style: TextStyle(color: Colors.grey, fontSize: 16)),
+                      const Text('No breeding pairs yet', style: TextStyle(color: Colors.grey, fontSize: 16)),
                       const SizedBox(height: 16),
                       ElevatedButton.icon(
                         onPressed: _showAddPairDialog,
                         icon: const Icon(Icons.add),
-                        label: const Text('Ghép cặp chim đầu tiên'),
+                        label: const Text('Add the first pair'),
                         style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary, foregroundColor: Colors.white),
                       ),
                     ],
@@ -239,7 +239,7 @@ class _BreedingScreenState extends State<BreedingScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text('Cặp phối giống', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                                const Text('Breeding pair', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                                 Chip(
                                   label: Text(pair.status),
                                   backgroundColor: AppColors.safeGreen.withOpacity(0.15),
@@ -250,11 +250,11 @@ class _BreedingScreenState extends State<BreedingScreen> {
                             Row(
                               children: [
                                 Expanded(
-                                  child: _buildParentTile('♂ Bố', male?.name ?? 'Không rõ', AppColors.infoBlue),
+                                  child: _buildParentTile('Father', male?.name ?? 'Unknown', AppColors.infoBlue),
                                 ),
                                 const Text(' ❤️ ', style: TextStyle(fontSize: 20)),
                                 Expanded(
-                                  child: _buildParentTile('♀ Mẹ', female?.name ?? 'Không rõ', Colors.pink),
+                                  child: _buildParentTile('Mother', female?.name ?? 'Unknown', Colors.pink),
                                 ),
                               ],
                             ),
@@ -262,11 +262,11 @@ class _BreedingScreenState extends State<BreedingScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('Ngày ghép cặp: ${pair.pairDate}', style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                                Text('Paired on ${pair.pairDate}', style: const TextStyle(fontSize: 12, color: Colors.grey)),
                                 TextButton.icon(
                                   onPressed: () => _showEggsModal(pair),
                                   icon: const Icon(Icons.egg_outlined),
-                                  label: const Text('Quản lý ổ trứng'),
+                                  label: const Text('Manage eggs'),
                                 ),
                               ],
                             ),
@@ -280,7 +280,7 @@ class _BreedingScreenState extends State<BreedingScreen> {
         heroTag: 'fab_breeding',
         onPressed: _showAddPairDialog,
         icon: const Icon(Icons.add),
-        label: const Text('Ghép cặp'),
+        label: const Text('Add pair'),
       ),
     );
   }

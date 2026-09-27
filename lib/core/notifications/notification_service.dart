@@ -31,8 +31,8 @@ class NotificationService {
   }) async {
     const androidDetails = AndroidNotificationDetails(
       'bird_care_reminders',
-      'Nhắc nhở chăm sóc chim',
-      channelDescription: 'Thông báo nhắc nhở cho chim ăn, thay nước, vệ sinh lồng',
+      'Bird care reminders',
+      channelDescription: 'Reminders to feed, change water, and clean the cage',
       importance: Importance.high,
       priority: Priority.high,
     );

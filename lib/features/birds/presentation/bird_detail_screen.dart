@@ -70,14 +70,14 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
     final confirm = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Xác nhận xóa'),
-        content: Text('Bạn có chắc chắn muốn xóa dữ liệu chú chim "${_bird.name}"?'),
+        title: const Text('Delete bird'),
+        content: Text('Delete all data for "${_bird.name}"?'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Hủy')),
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
             style: TextButton.styleFrom(foregroundColor: AppColors.dangerRed),
-            child: const Text('Xóa'),
+            child: const Text('Delete'),
           ),
         ],
       ),
@@ -115,10 +115,10 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
           labelColor: Colors.white,
           unselectedLabelColor: Colors.white70,
           tabs: const [
-            Tab(text: 'Thông tin'),
-            Tab(text: 'Cân nặng'),
-            Tab(text: 'Nhật ký'),
-            Tab(text: 'Gia phả'),
+            Tab(text: 'Profile'),
+            Tab(text: 'Weight'),
+            Tab(text: 'Diary'),
+            Tab(text: 'Pedigree'),
           ],
         ),
       ),
@@ -181,7 +181,7 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Text(
-                            'Giới tính: ${_bird.gender}',
+                            'Sex: ${_bird.gender}',
                             style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold, fontSize: 12),
                           ),
                         ),
@@ -200,15 +200,15 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: Column(
               children: [
-                _buildInfoRow(Icons.monitor_weight_outlined, 'Cân nặng hiện tại', '${_bird.weight?.toStringAsFixed(1) ?? "--"} g'),
+                _buildInfoRow(Icons.monitor_weight_outlined, 'Current weight', '${_bird.weight?.toStringAsFixed(1) ?? "--"} g'),
                 const Divider(height: 1),
-                _buildInfoRow(Icons.palette_outlined, 'Màu sắc / Đột biến', _bird.color ?? 'Chưa ghi nhận'),
+                _buildInfoRow(Icons.palette_outlined, 'Color / mutation', _bird.color ?? 'Not recorded'),
                 const Divider(height: 1),
-                _buildInfoRow(Icons.calendar_today_outlined, 'Ngày nuôi', _bird.adoptDate ?? 'Chưa ghi nhận'),
+                _buildInfoRow(Icons.calendar_today_outlined, 'Adopted', _bird.adoptDate ?? 'Not recorded'),
                 const Divider(height: 1),
-                _buildInfoRow(Icons.cake_outlined, 'Ngày sinh', _bird.birthDate ?? 'Chưa ghi nhận'),
+                _buildInfoRow(Icons.cake_outlined, 'Hatch date', _bird.birthDate ?? 'Not recorded'),
                 const Divider(height: 1),
-                _buildInfoRow(Icons.notes_outlined, 'Ghi chú', _bird.notes ?? 'Không có ghi chú'),
+                _buildInfoRow(Icons.notes_outlined, 'Notes', _bird.notes ?? 'No notes'),
               ],
             ),
           ),
@@ -251,7 +251,7 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
           children: [
             const Icon(Icons.show_chart, size: 60, color: Colors.grey),
             const SizedBox(height: 12),
-            const Text('Chưa có dữ liệu cân nặng', style: TextStyle(color: Colors.grey)),
+            const Text('No weight data yet', style: TextStyle(color: Colors.grey)),
             const SizedBox(height: 12),
             ElevatedButton(
               onPressed: () {
@@ -260,7 +260,7 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
                   MaterialPageRoute(builder: (_) => AddHealthLogScreen(bird: _bird)),
                 ).then((_) => _loadData());
               },
-              child: const Text('Ghi nhận cân nặng'),
+              child: const Text('Log weight'),
             ),
           ],
         ),
@@ -277,7 +277,7 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Biểu đồ theo dõi cân nặng (g)', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          const Text('Weight chart (g)', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           const SizedBox(height: 20),
           Container(
             height: 240,
@@ -331,7 +331,7 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
             ),
           ),
           const SizedBox(height: 20),
-          const Text('Lịch sử ghi nhận', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          const Text('Log history', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           const SizedBox(height: 10),
           ListView.builder(
             shrinkWrap: true,
@@ -341,8 +341,8 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
               final log = _healthLogs[index];
               return Card(
                 child: ListTile(
-                  title: Text('Ngày ${log.date}', style: const TextStyle(fontWeight: FontWeight.bold)),
-                  subtitle: Text('Ăn: ${log.appetite} • Hoạt động: ${log.activity} • Phân: ${log.droppings}'),
+                  title: Text(log.date, style: const TextStyle(fontWeight: FontWeight.bold)),
+                  subtitle: Text('Appetite: ${log.appetite} • Activity: ${log.activity} • Droppings: ${log.droppings}'),
                   trailing: Text(
                     log.weight != null ? '${log.weight!.toStringAsFixed(1)} g' : '--',
                     style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.primary),
@@ -360,7 +360,7 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
   Widget _buildDiaryTab() {
     if (_diaryEntries.isEmpty) {
       return const Center(
-        child: Text('Chưa có nhật ký ảnh nào cho chú chim này', style: TextStyle(color: Colors.grey)),
+        child: Text('No diary entries for this bird yet', style: TextStyle(color: Colors.grey)),
       );
     }
     return ListView.builder(
@@ -424,7 +424,7 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Gia phả & Dòng giống (Lineage)', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          const Text('Pedigree', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           const SizedBox(height: 16),
           Card(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -437,7 +437,7 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
                     children: [
                       Expanded(
                         child: _buildFamilyCard(
-                          title: 'Bố (♂)',
+                          title: 'Father',
                           bird: _pedigree!.father?.bird,
                           color: AppColors.infoBlue,
                         ),
@@ -445,7 +445,7 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
                       const SizedBox(width: 12),
                       Expanded(
                         child: _buildFamilyCard(
-                          title: 'Mẹ (♀)',
+                          title: 'Mother',
                           bird: _pedigree!.mother?.bird,
                           color: Colors.pink,
                         ),
@@ -457,7 +457,7 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
                   const SizedBox(height: 16),
                   // Target Bird Card
                   _buildFamilyCard(
-                    title: 'Chú chim này',
+                    title: 'This bird',
                     bird: _bird,
                     color: AppColors.primary,
                     isMain: true,
@@ -466,7 +466,7 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
                   if (_pedigree!.offspring.isNotEmpty) ...[
                     const Icon(Icons.south, color: AppColors.primary),
                     const SizedBox(height: 16),
-                    const Text('Con cái (Offspring)', style: TextStyle(fontWeight: FontWeight.bold)),
+                    const Text('Offspring', style: TextStyle(fontWeight: FontWeight.bold)),
                     const SizedBox(height: 8),
                     Wrap(
                       spacing: 8,
@@ -506,7 +506,7 @@ class _BirdDetailScreenState extends State<BirdDetailScreen> with SingleTickerPr
           Text(title, style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 12)),
           const SizedBox(height: 6),
           Text(
-            bird != null ? bird.name : 'Chưa rõ',
+            bird != null ? bird.name : 'Unknown',
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
           ),
           if (bird != null)
